@@ -11,13 +11,17 @@ import Home from './routes/HomeRoute';
 import Gallery from './routes/gallery/GalleryRoute';
 import AMA from './routes/AMA';
 
+let appInitialized = false;
+
 const App = () => {
   const theme = useRecoilValue(themeStore);
 
   const useMountEffect = () =>
     useEffect(() => {
-      console.log('FIRING')
-      initialize()
+      if (!appInitialized) {
+        initialize();
+        appInitialized = true;
+      }
     }, []);
 
   useMountEffect()
