@@ -2,7 +2,7 @@ import { atom } from "recoil";
 import type FileSystem from "webnative/fs/index";
 
 import { type Notification } from "./lib/notifications";
-import { initialSession, type SESSION } from "./lib/session";
+import { type SESSION } from "./lib/session";
 import { loadTheme, type THEME } from "./lib/theme";
 
 export const filesystemStore = atom({
@@ -17,7 +17,12 @@ export const notificationStore = atom({
 
 export const sessionStore = atom({
   key: "session",
-  default: initialSession as SESSION,
+  default: {
+    address: null,
+    authed: false,
+    loading: false,
+    error: false,
+  } as SESSION,
 });
 
 export const themeStore = atom({

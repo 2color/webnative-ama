@@ -1,48 +1,60 @@
+import { useNavigate } from 'react-router-dom';
+import { useRecoilValue } from 'recoil';
 
-import { appName } from '../../../lib/app-info'
-import type { ConnectView } from '../../../lib/views'
+import { disconnect, copyAddressToClipboard, initialize } from '../../../lib/session'
+import { sessionStore } from '../../../stores'
 
-type Props = {
-  changeView: (view: ConnectView ) => void;
-}
+const Connect = () => {
+  const navigate = useNavigate();
+  const session = useRecoilValue(sessionStore);
 
-const Connect = ({ changeView }: Props) => {
-  const handleChangeView = () => changeView("open-connected-device");
+  const handleDisconnect: () => Promise<void> = async () => {
+    await disconnect();
+    navigate('/');
+  }
+
+  if (session.authed) {
+    return (
+      <div className="dropdown dropdown-end">
+        <label
+          tabIndex={0}
+          htmlFor="connectDropdown"
+          className="m-1 hidden md:flex w-max max-w-[150px] cursor-pointer justify-between items-center rounded-full border dark:text-gray-50 dark:border-gray-50 border-slate-900 bg-gray-50 dark:bg-slate-900 hover:text-gray-50 hover:bg-slate-900 dark:hover:text-slate-900 dark:hover:bg-gray-50 transition-colors duration-250ms ease-in-out group text-sm py-2 pr-2 pl-3"
+        >
+          <span className="overflow-hidden text-ellipsis w-full inline-block">
+            {session?.address}
+          </span>
+        </label>
+        <ul
+          tabIndex={0}
+          id="connectDropdown"
+          className="dropdown-content card card-bordered border-gray-900 dark:border-gray-50 menu p-2 shadow bg-base-100 rounded-box text-sm w-[150px]"
+        >
+          <li>
+            <button
+              onClick={copyAddressToClipboard}
+              className="inline-block text-right"
+            >
+              Copy Address
+            </button>
+          </li>
+          <li>
+            <button
+              onClick={handleDisconnect}
+              className="inline-block text-right"
+            >
+              Disconnect
+            </button>
+          </li>
+        </ul>
+      </div>
+    );
+  }
 
   return (
-    <>
-      <input
-        type="checkbox"
-        id="connect-modal"
-        defaultChecked
-        className="modal-toggle"
-      />
-      <div className="modal">
-        <div className="modal-box w-80 relative text-center dark:border-slate-600 dark:border">
-          <a
-            href="/"
-            className="btn btn-xs btn-circle absolute right-2 top-2 dark:bg-slate-600"
-          >
-            ✕
-          </a>
-
-          <div>
-            <h3 className="mb-7 text-xl font-serif">Connect to {appName}</h3>
-            <div>
-              <a className="btn btn-primary mb-5 w-full" href="/register">
-                Create a new account
-              </a>
-              <button
-                className="btn btn-primary btn-outline w-full"
-                onClick={handleChangeView}
-              >
-                I have an existing account
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </>
+    <button className="btn btn-sm h-10 btn-primary normal-case" onClick={initialize}>
+      Connect
+    </button>
   );
 };
 
