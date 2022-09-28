@@ -14,6 +14,7 @@ import DelegateAccount from './routes/DelegateAccountRoute';
 import LinkDevice from './routes/LinkDeviceRoute';
 import Gallery from './routes/gallery/GalleryRoute';
 import Register from './routes/RegisterRoute';
+import AMA from './routes/AMA';
 
 const App = () => {
   const theme = useRecoilValue(themeStore);
@@ -29,7 +30,7 @@ const App = () => {
     <div data-theme={theme} className="App min-h-screen">
       <Router>
         <Header />
-        <Notifications />
+      <Notifications />
         <Routes>
           <Route path="/backup" element={<Backup />} />
           <Route path="/connect" element={<Connect />} />
@@ -37,6 +38,7 @@ const App = () => {
           <Route path="/delegate-account" element={<DelegateAccount />} />
           <Route path="/link-device" element={<LinkDevice />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/ama" element={<AMA />} />
           <Route path="/" element={<Home />} />
         </Routes>
       </Router>
