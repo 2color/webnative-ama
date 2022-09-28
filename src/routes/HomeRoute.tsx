@@ -1,8 +1,9 @@
 import { useRecoilValue } from "recoil";
+import { Link } from "react-router-dom";
 
-import { appName } from '../lib/app-info';
+import { appName } from "../lib/app-info";
 import { copyAddressToClipboard } from "../lib/session";
-import { sessionStore } from '../stores';
+import { sessionStore } from "../stores";
 
 const HomeRoute = () => {
   const session = useRecoilValue(sessionStore);
@@ -37,9 +38,9 @@ const HomeRoute = () => {
                   public and private storage.
                 </p>
                 <div className="card-actions justify-center">
-                  <a className="btn btn-primary" href="/gallery">
+                  <Link to="/gallery" className="btn btn-primary">
                     Go to Photos
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -51,32 +52,41 @@ const HomeRoute = () => {
             <p>
               This app is a template for building apps with the
               <a
-                className="link link-primary whitespace-nowrap"
+                className="link link-primary whitespace-nowrap px-1"
                 href="https://github.com/fission-codes/webnative"
-                target="_blank" rel="noreferrer"
+                target="_blank"
+                rel="noreferrer"
               >
                 Webnative SDK
-                <span className="-scale-x-100 scale-y-100 inline-block">⎋</span>
+                <span className="-scale-x-100 scale-y-100 inline-block px-1">
+                  ⎋
+                </span>
               </a>
             </p>
             <p>
               Get started
               <a
-                className="link link-primary"
+                className="link link-primary pl-1"
                 href="https://github.com/webnative-examples/walletauth"
-                target="_blank" rel="noreferrer"
+                target="_blank"
+                rel="noreferrer"
               >
                 using this template
-                <span className="-scale-x-100 scale-y-100 inline-block">⎋</span>
+                <span className="-scale-x-100 scale-y-100 inline-block px-1">
+                  ⎋
+                </span>
               </a>
               and learn more in the
               <a
-                className="link link-primary"
+                className="link link-primary pl-1"
                 href="https://guide.fission.codes/developers/webnative"
-                target="_blank" rel="noreferrer"
+                target="_blank"
+                rel="noreferrer"
               >
                 Webnative Guide
-                <span className="-scale-x-100 scale-y-100 inline-block">⎋</span>
+                <span className="-scale-x-100 scale-y-100 inline-block px-1">
+                  ⎋
+                </span>
               </a>
             </p>
           </div>
