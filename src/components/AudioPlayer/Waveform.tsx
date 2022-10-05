@@ -2,7 +2,7 @@ import * as React from 'react'
 
 interface Props {
   src: string
-  setWaveformData?: Function
+  setWaveformData?: (number: number[]) => void
   waveform: Array<number> | null
   isRecorder: boolean
 }
@@ -23,7 +23,7 @@ export default function Waveform({
   }
 
   React.useEffect(() => {
-    let context = new AudioContext()
+    const context = new AudioContext()
 
     setAudioContext(context)
 
@@ -85,7 +85,7 @@ const filterData = (audioBuffer, sampleCount) => {
   const blockSize = Math.floor(rawData.length / samples) // the number of samples in each subdivision
   const filteredData = []
   for (let i = 0; i < samples; i++) {
-    let blockStart = blockSize * i // the location of the first sample in the block
+    const blockStart = blockSize * i // the location of the first sample in the block
     let sum = 0
     for (let j = 0; j < blockSize; j++) {
       sum = sum + Math.abs(rawData[blockStart + j]) // find the sum of all the samples in the block

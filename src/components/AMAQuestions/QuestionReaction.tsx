@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react'
+import React from 'react'
 // import { incrementAMAReactions } from '~/lib/api'
 import { AmaQuestion } from '../../types/Ama'
 // import toast from 'react-hot-toast'
