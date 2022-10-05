@@ -1,6 +1,12 @@
 import * as React from 'react'
 
-export default function PlayPauseButton({ isPlaying, onClick }) {
+export default function PlayPauseButton({
+  isPlaying,
+  onClick,
+}: {
+  isPlaying: boolean
+  onClick: () => void
+}) {
   return (
     <button
       onClick={onClick}

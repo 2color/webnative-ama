@@ -6,7 +6,7 @@ import Waveform from './Waveform'
 
 interface Props {
   src: string
-  setWaveformData?: Function
+  setWaveformData?: (number: number[]) => void
   waveform: number[] | null
   id: string | null
   isRecorder: boolean
@@ -101,14 +101,14 @@ export default function AudioPlayer({
   }
 
   function scrub(e) {
-    let bounds = scrubbableRef.current.getBoundingClientRect()
-    let start = bounds.left
-    let end = bounds.right
-    let width = end - start
-    let point = e.pageX
-    let offset = point - start
-    let percentage = offset / width
-    let player = audioRef.current
+    const bounds = scrubbableRef.current.getBoundingClientRect()
+    const start = bounds.left
+    const end = bounds.right
+    const width = end - start
+    const point = e.pageX
+    const offset = point - start
+    const percentage = offset / width
+    const player = audioRef.current
 
     if (player.duration === Infinity) {
       // When we can't scrub for some weird reason, just play the audio
@@ -119,14 +119,14 @@ export default function AudioPlayer({
     player.currentTime = percentage * player.duration
     resetProgressOverlay()
 
-    let progress = player.currentTime / player.duration
+    const progress = player.currentTime / player.duration
     setProgressOverlayScale(progress)
 
     player.play()
     setIsPlaying(true)
 
     setTimeout(() => {
-      let remainingTime = player.duration - player.currentTime
+      const remainingTime = player.duration - player.currentTime
       setProgressOverlayRemainingDuration(remainingTime)
       setProgressOverlayScale(1)
     }, 1)

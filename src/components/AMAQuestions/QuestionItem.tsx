@@ -11,7 +11,7 @@ interface Props {
   question: AmaQuestion
 }
 
-export const QuestionItem = React.memo((props: Props) => {
+export const QuestionItem = React.memo(function QuestionItem(props: Props) {
   const { question, editable } = props
   const [isEditing, setIsEditing] = React.useState(false)
 

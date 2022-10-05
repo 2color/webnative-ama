@@ -4,7 +4,7 @@ import AskQuestion from './AskQuestion'
 import PendingQuestions from './PendingQuestions'
 import { AmaQuestion } from '../../types/Ama'
 
-const QuestionsList: React.FC = (props) => {
+const QuestionsList = () => {
   const questions: AmaQuestion[] = [
     {
       id: 'GBqXMxobnCqpKHCju5L2',

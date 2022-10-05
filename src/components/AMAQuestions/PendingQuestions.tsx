@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import Divider from '../Divider'
 import { QuestionItem } from './QuestionItem'
-import LoadingSpinner from '../LoadingSpinner'
 import { AmaQuestion } from '../../types/Ama'
+// import LoadingSpinner from '../LoadingSpinner'
 // import { getQuestions } from '~/lib/api'
 // import { useQuery } from 'react-query'
 

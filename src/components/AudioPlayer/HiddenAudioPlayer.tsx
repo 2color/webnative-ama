@@ -7,7 +7,7 @@ interface Props {
 }
 
 const HiddenAudioPlayer = React.forwardRef<HTMLAudioElement, Props>(
-  ({ src, preload }: Props, ref) => {
+  function HiddenAudioPlayer({ src, preload }: Props, ref) {
     return (
       <audio
         preload={preload ? 'auto' : 'metadata'}

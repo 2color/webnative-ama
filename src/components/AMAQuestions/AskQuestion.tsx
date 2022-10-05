@@ -2,7 +2,7 @@ import * as React from 'react'
 // import toast from 'react-hot-toast'
 // import { useMutation, useQueryClient } from 'react-query'
 import { Textarea } from '../Input'
-import { ErrorAlert, SuccessAlert } from '../Alert'
+import { SuccessAlert } from '../Alert'
 import Button from '../Button'
 
 export default function AskQuestion() {

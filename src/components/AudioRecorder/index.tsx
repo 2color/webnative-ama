@@ -1,4 +1,3 @@
-// @ts-ignore
 import * as React from 'react'
 import AudioPlayer from '../AudioPlayer'
 import Button, { DeleteButton, RecordingButton } from '../Button'
@@ -13,11 +12,11 @@ interface Props {
   id: string
   initialAudioUrl?: string
   initialWaveform?: number[]
-  onRecordingStart?: Function
-  onRecordingStop?: Function
-  onRecordingError?: Function
+  onRecordingStart?: () => void
+  onRecordingStop?: () => void
+  onRecordingError?: () => void
   // onTranscriptionComplete?: (e: OnComplete) => void
-  onDeleteAudio?: Function
+  onDeleteAudio?: () => void
   onUploadCompleteComplete: (e: {
     waveform: number[]
     src: string
@@ -52,14 +51,15 @@ type Action =
   | { type: 'delete' }
 
 export default function AudioRecorder({
-  id,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  id, // use the id to link the recording
   initialAudioUrl = null,
   initialWaveform = [],
   onRecordingStart,
   onRecordingStop,
   onRecordingError,
   onDeleteAudio,
-  onUploadCompleteComplete,
+  // onUploadCompleteComplete,
 }: Props) {
   const initialState = {
     status: initialAudioUrl ? 'recorded' : 'idle',
@@ -145,7 +145,7 @@ export default function AudioRecorder({
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true })
       try {
         // Currently not working on Safari due to lack of codec support
-        let mr = new MediaRecorder(stream)
+        const mr = new MediaRecorder(stream)
         console.log(`Recording with mimeType: ${mr.mimeType}`)
         setMediaRecorder(mr)
       } catch (e) {
@@ -192,7 +192,7 @@ export default function AudioRecorder({
   function stopRecording() {
     mediaRecorder.stop()
     const audioBlob = new Blob(audioChunks, { type: 'audio/mp3' })
-    let audioUrl = window.URL.createObjectURL(audioBlob)
+    const audioUrl = window.URL.createObjectURL(audioBlob)
     onRecordingStop && onRecordingStop()
     dispatch({ type: 'stop-recording', audioUrl, audioBlob })
   }

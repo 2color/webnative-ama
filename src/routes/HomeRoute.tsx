@@ -1,17 +1,16 @@
-import { useNavigate } from 'react-router-dom';
 import { useRecoilValue } from "recoil";
+import { Link } from "react-router-dom";
 
-import { appName } from '../lib/app-info';
-import { sessionStore } from '../stores';
-import Shield from '../components/icons/Shield';
+import { appName } from "../lib/app-info";
+import { copyAddressToClipboard } from "../lib/session";
+import { sessionStore } from "../stores";
 
 const HomeRoute = () => {
-  const navigate = useNavigate();
   const session = useRecoilValue(sessionStore);
 
   return (
     <>
-      <div className="grid grid-flow-row auto-rows-max gap-5 justify-items-center pb-5">
+      <div className="grid grid-flow-row auto-rows-max gap-5 justify-items-center py-4">
         <h1 className="text-2xl">Welcome to {appName}!</h1>
 
         {session?.authed && (
@@ -20,32 +19,14 @@ const HomeRoute = () => {
               <div className="card-body text-left">
                 <h2 className="card-title">👋 Account</h2>
                 <p>
-                  Your username is
-                  <span className="inline-block ml-1 px-1 font-mono bg-slate-300 dark:bg-slate-700 rounded-md">
-                    {session.username}
+                  Your address is:
+                  <span
+                    onClick={copyAddressToClipboard}
+                    className="inline-block px-2 mt-2 cursor-pointer font-mono bg-slate-300 dark:bg-slate-700 rounded-md overflow-hidden text-ellipsis w-[calc(100%-20px)]"
+                  >
+                    {session.address}
                   </span>
                 </p>
-
-                <>
-                  {session.backupCreated ? (
-                    <p>✅ You have connected your account on another device.</p>
-                  ) : (
-                    <p>
-                      <span className="h-7 w-7 mr-1 inline-block bg-orange-300 rounded-full font-normal text-center">
-                        <Shield />
-                      </span>
-                      You have not connected your account on another device.
-                    </p>
-                  )}
-                </>
-                <div className="card-actions justify-center mt-3">
-                  <button
-                    className="btn btn-primary"
-                    onClick={() => navigate('/delegate-account')}
-                  >
-                    Connect a new device
-                  </button>
-                </div>
               </div>
             </div>
 
@@ -57,9 +38,9 @@ const HomeRoute = () => {
                   public and private storage.
                 </p>
                 <div className="card-actions justify-center">
-                  <a className="btn btn-primary" href="/gallery">
+                  <Link to="/gallery" className="btn btn-primary">
                     Go to Photos
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -71,7 +52,7 @@ const HomeRoute = () => {
             <p>
               This app is a template for building apps with the
               <a
-                className="inline-block pl-1 link link-primary whitespace-nowrap"
+                className="link link-primary whitespace-nowrap px-1"
                 href="https://github.com/fission-codes/webnative"
                 target="_blank"
                 rel="noreferrer"
@@ -85,8 +66,8 @@ const HomeRoute = () => {
             <p>
               Get started
               <a
-                className="inline-block px-1 link link-primary"
-                href="https://github.com/fission-codes/webnative-app-template"
+                className="link link-primary pl-1"
+                href="https://github.com/webnative-examples/walletauth"
                 target="_blank"
                 rel="noreferrer"
               >
@@ -97,7 +78,7 @@ const HomeRoute = () => {
               </a>
               and learn more in the
               <a
-                className="inline-block pl-1 link link-primary"
+                className="link link-primary pl-1"
                 href="https://guide.fission.codes/developers/webnative"
                 target="_blank"
                 rel="noreferrer"
