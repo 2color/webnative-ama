@@ -30,7 +30,7 @@ const App = () => {
     <div data-theme={theme} className="App min-h-screen">
       <Router>
         <Header />
-      <Notifications />
+        <Notifications />
         <Routes>
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/ama" element={<AMA />} />

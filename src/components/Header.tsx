@@ -4,7 +4,6 @@ import { useRecoilState } from "recoil";
 import { themeStore } from '../stores';
 import { THEME } from '../lib/theme';
 import { appName } from '../lib/app-info';
-import Brand from './icons/Brand';
 import DarkMode from './icons/DarkMode';
 import LightMode from './icons/LightMode';
 import Connect from "./auth/connect/Connect";
@@ -21,7 +20,6 @@ const Header = () => {
   return (
     <header className="navbar bg-base-100 pt-0">
       <div className="flex-1 cursor-pointer hover:underline" onClick={() => navigate('/')}>
-        <Brand />
         <span className="text-xl ml-2">{appName}</span>
       </div>
 

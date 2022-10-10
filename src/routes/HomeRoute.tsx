@@ -44,9 +44,23 @@ const HomeRoute = () => {
                 </div>
               </div>
             </div>
+
+            <div className="card w-96 card-bordered dark:border-slate-600">
+              <div className="card-body text-left">
+                <h2 className="card-title">Voice AMA Demo</h2>
+                <p>
+                  Try out the AMA Page using the Webnative File System
+                </p>
+                <div className="card-actions justify-center">
+                  <Link to="/ama" className="btn btn-primary">
+                    Go to Voice AMA
+                  </Link>
+                </div>
+              </div>
+            </div>
           </>
         )}
-        <div className="card card-bordered w-96 dark:border-slate-600">
+        {/* <div className="card card-bordered w-96 dark:border-slate-600">
           <div className="card-body text-left">
             <h2 className="card-title">About</h2>
             <p>
@@ -90,7 +104,7 @@ const HomeRoute = () => {
               </a>
             </p>
           </div>
-        </div>
+        </div> */}
       </div>
     </>
   );

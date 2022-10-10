@@ -12,7 +12,7 @@ export default function PendingQuestion() {
       id: 'GBqXMxobnCqpKHCju5L2',
       createdAt: new Date('2021-10-25T22:00:00.000Z'),
       updatedAt: new Date('2022-09-28T12:37:52.329Z'),
-      question: 'How did you build this AMA page?',
+      question: 'What developer tools do you like?',
       answer: '',
       status: 'UNANSWERED',
       cid: '',

@@ -4,6 +4,10 @@ import { RecoilRoot } from 'recoil';
 import RecoilNexus from "recoil-nexus";
 
 import './index.css';
+import './App.css';
+import './prose-styles.css';
+
+
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 

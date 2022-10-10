@@ -7,6 +7,20 @@ import { AmaQuestion } from '../../types/Ama'
 const QuestionsList = () => {
   const questions: AmaQuestion[] = [
     {
+      answer:
+        'Prince of **Persia!**\n\n![](https://imageio.forbes.com/blogs-images/sethporges/files/2017/12/prince-persia-e1513641720771.jpg?format=jpg&width=1200)',
+      audioPlayCount: 0,
+      audioUrl: null,
+      audioWaveform: null,
+      createdAt: new Date('2022-05-15T02:39:39.258Z'),
+      id: 'cl36ovoqi000209l0mdaw1j45',
+      question: 'What would be your favorite video game of all time?',
+      reactions: 20,
+      status: 'ANSWERED',
+      cid: null,
+      updatedAt: new Date('2022-09-28T11:48:05.651Z'),
+    },
+    {
       id: 'GBqXMxobnCqpKHCju5L2',
       createdAt: new Date('2021-10-25T22:00:00.000Z'),
       updatedAt: new Date('2022-09-28T12:37:52.329Z'),
@@ -59,7 +73,15 @@ const QuestionsList = () => {
     },
   ]
   return (
-    <div className="mt-8 space-y-8 ">
+    <div className="max-w-screen-sm mx-auto mt-8 space-y-8 ">
+      <div className="space-y-2">
+        <h1 className="font-sans text-2xl font-black md:text-4xl text-primary">
+          Ask Me Anything
+        </h1>
+        <p className="font-sans text-xl leading-snug md:text-2xl text-tertiary">
+          Just for fun! Questions will be visible after I’ve answered.
+        </p>
+      </div>
       <AskQuestion />
 
       {<PendingQuestions />}
